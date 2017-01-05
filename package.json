@@ -1,0 +1,15 @@
+{
+  "name": "shield-study-schemas",
+  "version": "3.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gregg Lind <glind@mozilla.com>",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "jsonschema": "^1.1.1",
+    "randomstring": "^1.1.5"
+  }
+}
