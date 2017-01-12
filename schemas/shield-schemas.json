@@ -59,6 +59,14 @@
       "minLength": 1,
       "maxLength": 100
     },
+    "attributes": {
+      "type": "object",
+      "description": "Map(string, string) of attributes.",
+      "properties": {},
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
     "shieldStudy": {
       "type": "object",
       "description": "Shield Study State",
@@ -90,12 +98,7 @@
           "description": "Second part of name of state, if any.  Study-specific for study-defined endings."
         },
         "attributes": {
-          "type": "object",
-          "description": "Map(string, string) of attributes about the state, if needed.",
-          "properties": {},
-          "additionalProperties": {
-            "type": "string"
-          }
+          "$ref" : "#/definitions/attributes"
         }
       },
       "required": [
@@ -115,12 +118,7 @@
           ]
         },
         "attributes": {
-          "type": "object",
-          "description": "Map(string, string) of attributes of the addon data.",
-          "properties": {},
-          "additionalProperties": {
-            "type": "string"
-          }
+          "$ref" : "#/definitions/attributes"
         }
       },
       "required": [
@@ -171,12 +169,7 @@
           ]
         },
         "attributes": {
-          "type": "object",
-          "description": "Additional Groupable Fields, sent as Map(String, String).",
-          "properties": {},
-          "additionalProperties": {
-            "type": "string"
-          }
+          "$ref" : "#/definitions/attributes"
         },
         "error": {
           "type": "object",

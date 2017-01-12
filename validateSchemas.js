@@ -247,7 +247,6 @@ tests['test spaces in fields are not okay'] = function () {
 
 
 function runTests () {
-  console.log("yep")
   if (Object.keys(tests.only).length) {
     tests = tests.only;
   }
