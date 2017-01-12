@@ -1,0 +1,85 @@
+{
+    "shieldStudyFULL": {
+        "version": 3,
+        "study_name": "OZkTBmFTPhAXlCTx3H01rl",
+        "branch": "do8vlrxZMkbi8qELcjaHf2Io",
+        "addon_version": "0.1.1",
+        "shield_version": "1.2.3",
+        "data": {
+            "packet": "shield-study",
+            "study_state": "enter",
+            "study_state_fullname": "a string",
+            "attributes": {
+                "a": "a"
+            }
+        }
+    },
+    "shieldStudyMINIMAL": {
+        "version": 3,
+        "study_name": "df6aEUw8d66eUB2VNTweu6bQbSS",
+        "branch": "DPC5acak",
+        "addon_version": "0.1.1",
+        "shield_version": "1.2.3",
+        "data": {
+            "study_state": "enter",
+            "packet": "shield-study"
+        }
+    },
+    "shieldStudyAddonFULL": {
+        "version": 3,
+        "study_name": "6UfVncwxrbv5hSBs",
+        "branch": "69XHhNKn6koIGeoBi6LlaUmiU",
+        "addon_version": "0.1.1",
+        "shield_version": "1.2.3",
+        "data": {
+            "packet": "shield-study-addon",
+            "attributes": {
+                "some": "thing",
+                "other": "another"
+            }
+        }
+    },
+    "shieldStudyAddonMINIMAL": {
+        "version": 3,
+        "study_name": "eD",
+        "branch": "QKbJEs9WEQih",
+        "addon_version": "0.1.1",
+        "shield_version": "1.2.3",
+        "data": {
+            "packet": "shield-study-addon",
+            "attributes": {}
+        }
+    },
+    "shieldStudyErrorFULL": {
+        "version": 3,
+        "study_name": "QyFtdnpY33MKFFRje2rmmk1za",
+        "branch": "cFJufg",
+        "addon_version": "0.1.1",
+        "shield_version": "1.2.3",
+        "data": {
+            "packet": "shield-study-error",
+            "error_id": "LTz9N67c",
+            "error_source": "firefox",
+            "severity": "warn",
+            "message": "FKJtL9Mya5v9CJ6gNu3m5LQ9GRfB",
+            "attributes": {
+                "a": "a"
+            },
+            "error": {
+                "stack": "thing"
+            }
+        }
+    },
+    "shieldStudyErrorMINIMAL": {
+        "version": 3,
+        "study_name": "PqfQIjf2oM",
+        "branch": "YgoP91",
+        "addon_version": "0.1.1",
+        "shield_version": "1.2.3",
+        "data": {
+            "packet": "shield-study-error",
+            "error_id": "LYypg5ly0v5PQs6MVe0ju",
+            "error_source": "addon"
+        }
+    }
+}
