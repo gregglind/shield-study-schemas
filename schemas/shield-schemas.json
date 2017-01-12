@@ -12,23 +12,19 @@
       ]
     },
     "study_name": {
-      "type": "string",
-      "minLength": 1,
+      "$ref" : "#/definitions/idString",
       "description": "Name of a particular study.  Usually the addon_id."
     },
     "branch": {
-      "type": "string",
-      "minLength": 1,
+      "$ref" : "#/definitions/idString",
       "description": "Which branch (variation) of the study the user has."
     },
     "addon_version": {
-      "type": "string",
-      "minLength": 1,
+      "$ref" : "#/definitions/idString",
       "description": "Semantic version of the addon."
     },
     "shield_version": {
-      "type": "string",
-      "minLength": 1,
+      "$ref" : "#/definitions/idString",
       "description": "Which version of the shield-studies-addon-utils."
     },
     "data": {
@@ -56,8 +52,10 @@
     "data"
   ],
   "definitions": {
-    "nameString": {
-      "patternMatch": "/^\S*$/",
+    "idString": {
+      "description":  "between 1,100 chars, no spaces, unicode ok.",
+      "type": "string",
+      "pattern": "^\\S+$",
       "minLength": 1,
       "maxLength": 100
     },
@@ -142,13 +140,11 @@
           ]
         },
         "error_id": {
-          "type": "string",
-          "minLength": 1,
+          "$ref" : "#/definitions/idString",
           "description": "Short name for an error, for easy counting."
         },
         "error_source": {
           "type": "string",
-          "minLength": 1,
           "description": "Where did the error originate.",
           "enum": [
             "addon",
@@ -165,7 +161,6 @@
         },
         "severity": {
           "type": "string",
-          "minLength": 1,
           "description": "An explanation about the purpose of this instance.",
           "enum": [
             "debug",
