@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const VERSION = require("./package.json").version;
 
 var jsonschema = require("jsonschema");
 var schema = require("./schemas/shield-schemas.json");
@@ -246,6 +247,7 @@ tests['test spaces in fields are not okay'] = function () {
 
 
 function runTests () {
+  console.log("yep")
   if (Object.keys(tests.only).length) {
     tests = tests.only;
   }
@@ -286,25 +288,43 @@ function generate () {
   jsonfile.writeFileSync(file, valid, {spaces: 4})
 }
 
-var args = process.argv.slice(2);
-if (args.includes('create')) {
-  generate();
+function genPackets (which, n) {
+  k = 0;
+  while (k < n) {
+    k +=1;
+    let ans = ({
+      'study': generateShieldStudy,
+      'error': generateShieldError,
+      'addon': generateShieldAddon
+    }[which])()
+    console.log(JSON.stringify(combine(generateValidCommon(),ans)));
+  }
 }
-if (args.includes('test')) {
-  runTests();
-}
+
+var program = require('commander');
+
+program
+  .version(VERSION)
+  .description('generate and test shield packets');
+
+program
+  .command('test')
+  .action(function () {runTests()});
+
+program
+  .command('example')
+  .description("make a pre-baked file of example packets")
+  .action(function () {generate()});
 
 
-//const valid = {
-//  "test something": combine(generateValidCommon(),  )
-//
-//};
-//
-//
-//const invalid = {
-//  "test no fields is okay"
-//
-//}
+program
+  .command('make')
+  .description("make on packet per line of type ")
+  .option('-t --type [type]', 'packet type', /^(addon|error|study)$/i)
+  .option('-n <i>', 'number to make', parseInt)
+  .action(function (options) {
+    genPackets(options.type, options.N)
+  });
 
-
+program.parse(process.argv);
 
