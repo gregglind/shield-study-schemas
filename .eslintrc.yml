@@ -1,0 +1,19 @@
+env:
+  node: true
+  es6:  true
+
+extends:
+  - eslint:recommended
+
+root: true
+
+rules:
+  eol-last: error
+  eqeqeq: error
+  handle-callback-err: error
+  indent: [error, 2]
+  no-console: 0
+  no-unused-vars: [error, {vars: all, args: none}]
+  one-var: [error, never]
+  quotes: [error, single]
+  semi: [error, always]

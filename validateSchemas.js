@@ -1,15 +1,13 @@
 #!/usr/bin/env node
-const VERSION = require("./package.json").version;
+const VERSION = require('./package.json').version;
 
-var jsonschema = require("jsonschema");
-var schema = require("./schemas/shield-schemas.json");
+var jsonschema = require('jsonschema');
+
+var schema = require('./schemas/shield-schemas.json');
 const assert = require('assert');
-const randomstring = require("randomstring");
+const randomstring = require('randomstring');
 var jsonfile = require('jsonfile');
 
-var deref = require('json-schema-deref');
-//deref(schema, (err,thing)=>console.dir(thing.properties.data))
-debugger;
 
 var validStudyStates =   schema.definitions.shieldStudy.properties.study_state.enum;
 var validErrorSource =   schema.definitions.shieldStudyError.properties.error_source.enum;
@@ -24,12 +22,12 @@ function randInt(a, b) {
     b=a;
     a=1;
   }
-  return Math.floor(Math.random()*(b-a-1) + a)
+  return Math.floor(Math.random()*(b-a-1) + a);
 }
 
-function codepoint() {
-   return "\\u" + randomstring.generate({length:4, charset: "hex"})
-}
+//function codepoint() {
+//  return '\\u' + randomstring.generate({length:4, charset: 'hex'});
+//}
 
 function genString (length) {
   return randomstring.generate({length: length, charset: 'alphanumeric', readable: false});
@@ -42,8 +40,8 @@ function randEl (anArray) {
 function generateAttributes () {
   let attributes = {};
   Array(randInt(0,10)).fill(1).forEach((k) => {
-      attributes[genString(randInt(1,10))] = genString(randInt(1,10))
-  })
+    attributes[genString(randInt(1,10))] = genString(randInt(1,10));
+  });
   return attributes;
 }
 
@@ -52,47 +50,47 @@ function generateValidCommon () {
     version: 3,
     study_name: randEl(studyNames),
     branch: randEl(branches),
-    addon_version: "0.1.1",
-    shield_version: "1.2.3",
-  }
+    addon_version: '0.1.1',
+    shield_version: '1.2.3',
+  };
 }
 
 function generateShieldStudy(maximal = true) {
   var data = {
-    packet: "shield-study",
+    packet: 'shield-study',
     study_state: randEl(validStudyStates),
   };
   if (maximal) {
     data.study_state_fullname = genString(randInt(1,20));
-    data.attributes = generateAttributes()
+    data.attributes = generateAttributes();
   }
-  return data
+  return data;
 }
 
 function generateShieldAddon(maximal = true) {
   var data = {
-    packet: "shield-study-addon",
+    packet: 'shield-study-addon',
     attributes: generateAttributes()
   };
   if (!maximal) {
-    data.attributes = {}
+    data.attributes = {};
   }
-  return data
+  return data;
 }
 
 function generateShieldError(maximal=true) {
   var data = {
-    packet: "shield-study-error",
+    packet: 'shield-study-error',
     error_id:  genString(randInt(1,30)),
     error_source: randEl(validErrorSource),
     // optional
     severity: randEl(validErrorSeverity),
     message:  genString(randInt(1,30)),
     attributes:  {
-      a: "a"
+      a: 'a'
     },
-    error: {stack: "thing"}
-  }
+    error: {stack: 'thing'}
+  };
 
   if (!maximal) {
     delete data.severity;
@@ -101,7 +99,7 @@ function generateShieldError(maximal=true) {
     delete data.error;
   }
 
-  return data
+  return data;
 }
 
 
@@ -122,20 +120,22 @@ function combine (common, dataField) {
 
 function noErrors(validationResult) {
   //console.log(validationResult.errors.length, validationResult.errors.length == 0 )
-  return validationResult.errors.length == 0;
+  return validationResult.errors.length === 0;
 }
 
 
 function simpleTest(common, data, msg, ok=true) {
-  debugger;
-  var d = combine(common, data )
-  debugger;
+
+  var d = combine(common, data );
+
   let validation = validate(d, schema);
   let val = noErrors(validate(d, schema));
+
   if (!ok) {
     val = !val;
   }
-  assert.ok(val, `${msg} :: ${validation.errors}`)
+
+  assert.ok(val, `${msg} :: node ${validation.errors}`);
 }
 
 
@@ -144,88 +144,88 @@ tests.only = {};
 
 tests['test empty doesnt validate'] = function () {
   //console.log(validate({}));
-  assert.equal(noErrors(validate({})), false)
-}
+  assert.equal(noErrors(validate({})), false);
+};
 
 tests['test shield-study MINIMAL is okay'] = function () {
   return validStudyStates.map(function (state) {
     var data = {
       study_state: state,
-      packet: "shield-study"
+      packet: 'shield-study'
     };
-    debugger;
-    simpleTest(generateValidCommon(), data, `study_state: ${state} should be valid MINIMAL, ${JSON.stringify(data)}`)
-  })
-}
+
+    simpleTest(generateValidCommon(), data, `study_state: ${state} should be valid MINIMAL, ${JSON.stringify(data)}`);
+  });
+};
 
 tests['test shield-study FULL is okay'] = function () {
   return validStudyStates.map(function (state) {
     var data = {
-      packet: "shield-study",
+      packet: 'shield-study',
       study_state: state,
-      study_state_fullname: "aString",
+      study_state_fullname: 'aString',
       attributes:  {
-        a: "a"
+        a: 'a'
       }
     };
-    debugger;
-    simpleTest(generateValidCommon(), data, `study_state: ${state} should be valid MINIMAL, ${JSON.stringify(data)}`)
-  })
-}
+
+    simpleTest(generateValidCommon(), data, `study_state: ${state} should be valid MINIMAL, ${JSON.stringify(data)}`);
+  });
+};
 
 tests['test shield-study-addon MINIMAL is okay'] = function () {
   var data = {
-    packet: "shield-study-addon",
+    packet: 'shield-study-addon',
     attributes: {}
-  }
-  simpleTest(generateValidCommon(), data, `${JSON.stringify(data)}`)
-}
+  };
+  simpleTest(generateValidCommon(), data, `${JSON.stringify(data)}`);
+};
 
 
 tests['test shield-study-addon FULL is okay'] = function () {
   var data = {
-    packet: "shield-study-addon",
+    packet: 'shield-study-addon',
     attributes: {
-      some: "thing",
-      other: "another"
+      some: 'thing',
+      other: 'another'
     }
-  }
-  simpleTest(generateValidCommon(), data, `${JSON.stringify(data)}`)
-}
+  };
+  simpleTest(generateValidCommon(), data, `${JSON.stringify(data)}`);
+};
 
 tests['test shield-study-error MINIMAL is okay'] = function () {
   return validErrorSeverity.map(function (severity) {
     return validErrorSource.map(function (source) {
       var data = {
-        packet: "shield-study-error",
+        packet: 'shield-study-error',
         error_id:  genString(randInt(1,30)),
         error_source: source
       };
-      debugger;
-      simpleTest(generateValidCommon(), data, `error: ${severity} ${source} should be valid MAXIMAL error, ${JSON.stringify(data)}`)
-    })
-  })
-}
+
+      simpleTest(generateValidCommon(), data, `error: ${severity} ${source} should be valid MAXIMAL error, ${JSON.stringify(data)}`);
+    });
+  });
+};
 
 tests['test shield-study-error FULL is okay'] = function () {
   return validErrorSeverity.map(function (severity) {
     return validErrorSource.map(function (source) {
       var data = {
-        packet: "shield-study-error",
+        packet: 'shield-study-error',
         error_id:  genString(randInt(1,30)),
         error_source: source,
         severity: severity,
         message:  genString(randInt(1,30)),
         attributes:  {
-          a: "a"
+          a: 'a'
         },
-        error: {stack: "thing"}
+        error: {stack: 'thing'}
       };
-      debugger;
-      simpleTest(generateValidCommon(), data, `error: ${severity} ${source} should be valid MAXIMAL error, ${JSON.stringify(data)}`)
-    })
-  })
-}
+
+      simpleTest(generateValidCommon(), data, `error: ${severity} ${source} should be valid MAXIMAL error, ${JSON.stringify(data)}`);
+    });
+  });
+};
 
 // todo some faily things
 // wrong messages
@@ -234,16 +234,16 @@ tests['test shield-study-error FULL is okay'] = function () {
 tests['test empty data is NOT okay'] = function () {
   var data = {
   };
-  simpleTest(generateValidCommon(), data, `${JSON.stringify(data)}`, false)
-}
+  simpleTest(generateValidCommon(), data, `${JSON.stringify(data)}`, false);
+};
 
 tests['test spaces in fields are not okay'] = function () {
   let c = generateValidCommon();
-  c.study_name = " some with spaces ";
+  c.study_name = ' some with spaces ';
   var data = generateShieldAddon();
-  debugger;
-  simpleTest(c, data, `${JSON.stringify(data)}`, false)
-}
+
+  simpleTest(c, data, `${JSON.stringify(data)}`, false);
+};
 
 
 function runTests () {
@@ -252,15 +252,15 @@ function runTests () {
   }
 
   Object.keys(tests).forEach((k) => {
-    if (k === "only") return;
+    if (k === 'only') return;
 
     try {
       tests[k]();
-      console.log("OK", k)
+      console.log('OK', k);
     } catch (err) {
-      console.error("ERROR", k, err);
+      console.error('ERROR', k, err);
     }
-  })
+  });
 }
 
 
@@ -278,25 +278,31 @@ function generate () {
   var file = 'example.valid.packets.json';
   // check they are valid
   Object.keys(valid).map((k) => {
-    console.log(valid[k]);
-    debugger;
+    //console.log(valid[k]);
+
     var attempt =  validate(valid[k],schema);
-    debugger;
-    assert.ok(noErrors(attempt))
-  })
-  jsonfile.writeFileSync(file, valid, {spaces: 4})
+
+    assert.ok(noErrors(attempt));
+  });
+  console.log(`writing: ${file}`);
+  jsonfile.writeFileSync(file, valid, {spaces: 4});
 }
 
 function genPackets (which, n) {
-  k = 0;
+  let k = 0;
   while (k < n) {
     k +=1;
     let ans = ({
       'study': generateShieldStudy,
       'error': generateShieldError,
       'addon': generateShieldAddon
-    }[which])()
-    console.log(JSON.stringify(combine(generateValidCommon(),ans)));
+    }[which])();
+    var packet = combine(generateValidCommon(),ans);
+
+    let val = jsonschema.validate(packet, schema);
+
+    assert.ok(noErrors(val), `node ${val.errors}`);
+    console.log(JSON.stringify(packet));
   }
 }
 
@@ -308,21 +314,21 @@ program
 
 program
   .command('test')
-  .action(function () {runTests()});
+  .action(function () {runTests();});
 
 program
   .command('example')
-  .description("make a pre-baked file of example packets")
-  .action(function () {generate()});
+  .description('make a pre-baked file of example packets')
+  .action(function () {generate();});
 
 
 program
   .command('make')
-  .description("make on packet per line of type ")
+  .description('make on packet per line of type ')
   .option('-t --type [type]', 'packet type', /^(addon|error|study)$/i)
   .option('-n <i>', 'number to make', parseInt)
   .action(function (options) {
-    genPackets(options.type, options.N)
+    genPackets(options.type, options.N);
   });
 
 program.parse(process.argv);

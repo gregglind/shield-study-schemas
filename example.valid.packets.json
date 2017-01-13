@@ -2,51 +2,54 @@
     "shieldStudyFULL": {
         "version": 3,
         "study_name": "something@moz",
-        "branch": "totally-gnarly-1",
+        "branch": "control",
         "addon_version": "0.1.1",
         "shield_version": "1.2.3",
         "data": {
             "packet": "shield-study",
-            "study_state": "ended-positive",
-            "study_state_fullname": "Yv13QCBl69fJzg",
+            "study_state": "ineligible",
+            "study_state_fullname": "M",
             "attributes": {
-                "9U": "RT"
+                "ygf": "O",
+                "z8Sifk": "bO",
+                "4kApH": "O5PRN",
+                "LNXk": "iNlv3oC",
+                "K": "cfS",
+                "p": "GgCfSx",
+                "qkum": "Gx"
             }
         }
     },
     "shieldStudyMINIMAL": {
         "version": 3,
         "study_name": "fake-study-1",
-        "branch": "control",
+        "branch": "medium-råre",
         "addon_version": "0.1.1",
         "shield_version": "1.2.3",
         "data": {
             "packet": "shield-study",
-            "study_state": "expired"
+            "study_state": "active"
         }
     },
     "shieldStudyAddonFULL": {
         "version": 3,
         "study_name": "something@moz",
-        "branch": "control",
+        "branch": "medium-råre",
         "addon_version": "0.1.1",
         "shield_version": "1.2.3",
         "data": {
             "packet": "shield-study-addon",
             "attributes": {
-                "wbAv22v": "qDLG",
-                "pst": "ilnl7",
-                "qaF": "8cSu",
-                "bpZp": "hb",
-                "cIR": "IIx",
-                "Ih": "f73"
+                "9WVkEoDD": "Pn8",
+                "O9": "nn",
+                "VZY0PF91": "apy"
             }
         }
     },
     "shieldStudyAddonMINIMAL": {
         "version": 3,
-        "study_name": "something@moz",
-        "branch": "control",
+        "study_name": "fake-study-1",
+        "branch": "totally-gnarly-1",
         "addon_version": "0.1.1",
         "shield_version": "1.2.3",
         "data": {
@@ -56,16 +59,16 @@
     },
     "shieldStudyErrorFULL": {
         "version": 3,
-        "study_name": "something@moz",
-        "branch": "totally-gnarly-1",
+        "study_name": "fake-study-1",
+        "branch": "medium-råre",
         "addon_version": "0.1.1",
         "shield_version": "1.2.3",
         "data": {
             "packet": "shield-study-error",
-            "error_id": "Ev5",
-            "error_source": "firefox",
-            "severity": "fatal",
-            "message": "s0",
+            "error_id": "9KbF",
+            "error_source": "addon",
+            "severity": "debug",
+            "message": "8EpMSO1eL08cx8coYyLMldfaXGB5",
             "attributes": {
                 "a": "a"
             },
@@ -77,13 +80,13 @@
     "shieldStudyErrorMINIMAL": {
         "version": 3,
         "study_name": "something@moz",
-        "branch": "medium-råre",
+        "branch": "control",
         "addon_version": "0.1.1",
         "shield_version": "1.2.3",
         "data": {
             "packet": "shield-study-error",
-            "error_id": "DJjwkGC",
-            "error_source": "unknown"
+            "error_id": "H69Hi",
+            "error_source": "firefox"
         }
     }
 }
