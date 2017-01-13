@@ -52,6 +52,7 @@ function generateValidCommon () {
     branch: randEl(branches),
     addon_version: '0.1.1',
     shield_version: '1.2.3',
+    testing:  true
   };
 }
 

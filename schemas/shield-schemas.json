@@ -27,6 +27,10 @@
       "$ref" : "#/definitions/idString",
       "description": "Which version of the shield-studies-addon-utils."
     },
+    "testing": {
+      "type": "boolean",
+      "description":  "If `true`, this packet is a TESTING packet and can be safely ignored."
+    },
     "data": {
       "type": "object",
       "description": "Data must conform to one of the 3 validators below.",
