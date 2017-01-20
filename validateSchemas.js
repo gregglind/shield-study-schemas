@@ -1,7 +1,15 @@
 #!/usr/bin/env node
 const VERSION = require('./package.json').version;
 
-var jsonschema = require('jsonschema');
+var Ajv = require('ajv');
+var ajv = new Ajv();
+
+var jsonschema = {
+  validate: function (data, schema) {
+    var valid = ajv.validate(schema, data);
+    return {valid: valid, errors:  ajv.errors || []};
+  }
+};
 
 var schema = require('./schemas/shield-schemas.json');
 const assert = require('assert');
@@ -103,8 +111,6 @@ function generateShieldError(maximal=true) {
   return data;
 }
 
-
-
 function validate (thing) {
   return jsonschema.validate(thing, schema);
 }
@@ -169,7 +175,6 @@ tests['test shield-study FULL is okay'] = function () {
         a: 'a'
       }
     };
-
     simpleTest(generateValidCommon(), data, `study_state: ${state} should be valid MINIMAL, ${JSON.stringify(data)}`);
   });
 };
@@ -181,6 +186,14 @@ tests['test shield-study-addon MINIMAL is okay'] = function () {
   };
   simpleTest(generateValidCommon(), data, `${JSON.stringify(data)}`);
 };
+
+tests['test shield-study-addon NO ATTRIBUTES is NOT okay'] = function () {
+  var data = {
+    packet: 'shield-study-addon',
+  };
+  simpleTest(generateValidCommon(), data, `${JSON.stringify(data)}`, false);
+};
+
 
 
 tests['test shield-study-addon FULL is okay'] = function () {
