@@ -1,0 +1,99 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "shield-study",
+    "description": "Shield Study State",
+    "properties": {
+        "version": {
+            "type": "integer",
+            "title": "Version schema.  Will be 3",
+            "enum": [
+                3
+            ]
+        },
+        "study_name": {
+            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "type": "string",
+            "pattern": "^\\S+$",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "branch": {
+            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "type": "string",
+            "pattern": "^\\S+$",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "addon_version": {
+            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "type": "string",
+            "pattern": "^\\S+$",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "shield_version": {
+            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "type": "string",
+            "pattern": "^\\S+$",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "testing": {
+            "type": "boolean",
+            "description": "If `true`, this packet is a TESTING packet and can be safely ignored."
+        },
+        "data": {
+            "type": "object",
+            "description": "Shield Study State",
+            "properties": {
+                "packet": {
+                    "type": "string",
+                    "enum": [
+                        "shield-study"
+                    ]
+                },
+                "study_state": {
+                    "type": "string",
+                    "description": "message about the most recent state of the study.",
+                    "enum": [
+                        "enter",
+                        "exit",
+                        "installed",
+                        "ineligible",
+                        "expired",
+                        "user-disable",
+                        "ended-positive",
+                        "ended-neutral",
+                        "ended-negative",
+                        "active"
+                    ]
+                },
+                "study_state_fullname": {
+                    "type": "string",
+                    "description": "Second part of name of state, if any.  Study-specific for study-defined endings."
+                },
+                "attributes": {
+                    "type": "object",
+                    "description": "Map(string, string) of attributes.",
+                    "properties": {},
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "packet",
+                "study_state"
+            ]
+        }
+    },
+    "required": [
+        "version",
+        "study_name",
+        "branch",
+        "addon_version",
+        "shield_version",
+        "data"
+    ]
+}

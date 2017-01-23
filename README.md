@@ -20,9 +20,12 @@ Or pre-baked at:
 
 
 
-## Schema
+## Schemas
 
-[Schema](./shield-schemas.json)
+`node split-schemas.js`
+
+- [Schema](./shield-schemas.json)
+- [Split Schemas](./schemas/)
 
 
 

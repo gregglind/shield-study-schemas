@@ -1,0 +1,80 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "shield-study-addon",
+    "description": "Shield-Study-addon addon-specific data, sent as Map(s,s).  You may have to cast back at re:dash.",
+    "properties": {
+        "version": {
+            "type": "integer",
+            "title": "Version schema.  Will be 3",
+            "enum": [
+                3
+            ]
+        },
+        "study_name": {
+            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "type": "string",
+            "pattern": "^\\S+$",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "branch": {
+            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "type": "string",
+            "pattern": "^\\S+$",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "addon_version": {
+            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "type": "string",
+            "pattern": "^\\S+$",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "shield_version": {
+            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "type": "string",
+            "pattern": "^\\S+$",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "testing": {
+            "type": "boolean",
+            "description": "If `true`, this packet is a TESTING packet and can be safely ignored."
+        },
+        "data": {
+            "type": "object",
+            "title": "Shield-Study-Addon 'data' field.",
+            "description": "Shield-Study-addon addon-specific data, sent as Map(s,s).  You may have to cast back at re:dash.",
+            "properties": {
+                "packet": {
+                    "type": "string",
+                    "enum": [
+                        "shield-study-addon"
+                    ]
+                },
+                "attributes": {
+                    "type": "object",
+                    "description": "Map(string, string) of attributes.",
+                    "properties": {},
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "packet",
+                "attributes"
+            ]
+        }
+    },
+    "required": [
+        "version",
+        "study_name",
+        "branch",
+        "addon_version",
+        "shield_version",
+        "data"
+    ]
+}

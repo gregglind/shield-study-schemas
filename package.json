@@ -1,7 +1,7 @@
 {
   "name": "shield-study-schemas",
   "description": "Schemas (jsonschema) and packet generator for Shield Studies",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "author": "Gregg Lind <glind@mozilla.com>",
   "bugs": {
     "url": "https://github.com/gregglind/shield-study-schemas/issues"
@@ -12,6 +12,7 @@
     "depcheck": "^0.6.7",
     "eslint": "^3.13.1",
     "fixpack": "^2.3.1",
+    "json-schema-deref": "^0.3.5",
     "jsonfile": "^2.4.0",
     "npm-run-all": "^4.0.0",
     "randomstring": "^1.1.5"
@@ -34,6 +35,6 @@
     "lint:eslint": "eslint .",
     "lint:fixpack": "fixpack",
     "prepublish": "npm shrinkwrap",
-    "test": "npm run lint && node ./validateSchemas.js test && echo OK"
+    "test": "npm run lint && node ./validateSchemas.js test && node ./split-schemas.js && echo OK"
   }
 }
