@@ -11,7 +11,7 @@ var jsonschema = {
   }
 };
 
-var schema = require('./schemas/shield-schemas.json');
+var schema = require('./shield-schemas.json');
 const assert = require('assert');
 const randomstring = require('randomstring');
 var jsonfile = require('jsonfile');

@@ -14,10 +14,16 @@ node validateSchemas.js make -t error -n 10
 
 Or pre-baked at:
 
-<http://./example.valid.packets.json>
+[Example Valid Packets](./example.valid.packets.json)
 
-## Schemas
+`node validateSchemas.js example`
 
-Schema lives at <http://./schemas/shield-schemas.json>
+
+
+## Schema
+
+[Schema](./shield-schemas.json)
+
+
 
 
