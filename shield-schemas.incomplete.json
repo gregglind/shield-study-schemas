@@ -75,12 +75,6 @@
       "type": "object",
       "description": "Shield Study State",
       "properties": {
-        "packet": {
-          "type": "string",
-          "enum": [
-            "shield-study"
-          ]
-        },
         "study_state": {
           "type": "string",
           "description": "message about the most recent state of the study.",
@@ -106,7 +100,6 @@
         }
       },
       "required": [
-        "packet",
         "study_state"
       ]
     },
@@ -115,18 +108,11 @@
       "title": "Shield-Study-Addon 'data' field.",
       "description": "Shield-Study-addon addon-specific data, sent as Map(s,s).  You may have to cast back at re:dash.",
       "properties": {
-        "packet": {
-          "type": "string",
-          "enum": [
-            "shield-study-addon"
-          ]
-        },
         "attributes": {
           "$ref" : "#/definitions/attributes"
         }
       },
       "required": [
-        "packet",
         "attributes"
       ]
     },
@@ -135,12 +121,6 @@
       "title": "Shield-Study-Error 'data' field",
       "description": "Notify, group and count some kinds of errors from shield studies.",
       "properties": {
-        "packet": {
-          "type": "string",
-          "enum": [
-            "shield-study-error"
-          ]
-        },
         "error_id": {
           "$ref" : "#/definitions/idString",
           "description": "Short name for an error, for easy counting."
@@ -185,7 +165,6 @@
         }
       },
       "required": [
-        "packet",
         "error_id",
         "error_source"
       ]

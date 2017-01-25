@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var deref = require('json-schema-deref');
-var schema = require('./shield-schemas.json');
+var schema = require('./shield-schemas.incomplete.json');
 var jsonfile = require('jsonfile');
 
 
@@ -34,6 +34,13 @@ schema.properties.data.oneOf.map(function (which) {
     type: 'object',
     $ref: which.$ref
   };
+  modified.properties['type'] = {
+    'type': 'string',
+    'description':  'doc_type, restated',
+    'enum': [
+      key
+    ]
+  },
   allSchemas.push([key, modified]);
 });
 
@@ -42,10 +49,16 @@ function uncamel(camelcase, joinstr='-') {
 }
 
 
-function finalMod(splitSchema, title) {
+function finalMod(splitSchema, title, oschema) {
   delete splitSchema.definitions;
   splitSchema.description = splitSchema.properties.data.description;
   splitSchema.title = title;
+  Object.keys(splitSchema.properties).forEach((k)=>{
+    if (k==='data') return;
+    splitSchema.properties[k].description = oschema.properties[k].description;
+
+  });
+
   return splitSchema;
 }
 
@@ -58,7 +71,7 @@ allSchemas.map(function (tuple) {
     if (err) return;
     let fn = `${DIR}/${key}.schema.json`;
     console.log(`writing ${key} at ${fn}`);
-    fullSchema = finalMod(fullSchema, key);
+    fullSchema = finalMod(copy(fullSchema), key, myschema);
     jsonfile.writeFileSync(fn, fullSchema, {spaces: 4});
   });
 });

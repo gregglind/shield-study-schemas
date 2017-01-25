@@ -12,28 +12,28 @@
             ]
         },
         "study_name": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Name of a particular study.  Usually the addon_id.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
             "maxLength": 100
         },
         "branch": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Which branch (variation) of the study the user has.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
             "maxLength": 100
         },
         "addon_version": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Semantic version of the addon.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
             "maxLength": 100
         },
         "shield_version": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Which version of the shield-studies-addon-utils.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
@@ -48,12 +48,6 @@
             "title": "Shield-Study-Addon 'data' field.",
             "description": "Shield-Study-addon addon-specific data, sent as Map(s,s).  You may have to cast back at re:dash.",
             "properties": {
-                "packet": {
-                    "type": "string",
-                    "enum": [
-                        "shield-study-addon"
-                    ]
-                },
                 "attributes": {
                     "type": "object",
                     "description": "Map(string, string) of attributes.",
@@ -64,8 +58,14 @@
                 }
             },
             "required": [
-                "packet",
                 "attributes"
+            ]
+        },
+        "type": {
+            "type": "string",
+            "description": "doc_type, restated",
+            "enum": [
+                "shield-study-addon"
             ]
         }
     },

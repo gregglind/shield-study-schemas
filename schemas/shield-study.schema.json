@@ -12,28 +12,28 @@
             ]
         },
         "study_name": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Name of a particular study.  Usually the addon_id.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
             "maxLength": 100
         },
         "branch": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Which branch (variation) of the study the user has.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
             "maxLength": 100
         },
         "addon_version": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Semantic version of the addon.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
             "maxLength": 100
         },
         "shield_version": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Which version of the shield-studies-addon-utils.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
@@ -47,12 +47,6 @@
             "type": "object",
             "description": "Shield Study State",
             "properties": {
-                "packet": {
-                    "type": "string",
-                    "enum": [
-                        "shield-study"
-                    ]
-                },
                 "study_state": {
                     "type": "string",
                     "description": "message about the most recent state of the study.",
@@ -83,8 +77,14 @@
                 }
             },
             "required": [
-                "packet",
                 "study_state"
+            ]
+        },
+        "type": {
+            "type": "string",
+            "description": "doc_type, restated",
+            "enum": [
+                "shield-study"
             ]
         }
     },

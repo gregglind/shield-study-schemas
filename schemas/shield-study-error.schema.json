@@ -12,28 +12,28 @@
             ]
         },
         "study_name": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Name of a particular study.  Usually the addon_id.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
             "maxLength": 100
         },
         "branch": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Which branch (variation) of the study the user has.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
             "maxLength": 100
         },
         "addon_version": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Semantic version of the addon.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
             "maxLength": 100
         },
         "shield_version": {
-            "description": "between 1,100 chars, no spaces, unicode ok.",
+            "description": "Which version of the shield-studies-addon-utils.",
             "type": "string",
             "pattern": "^\\S+$",
             "minLength": 1,
@@ -48,12 +48,6 @@
             "title": "Shield-Study-Error 'data' field",
             "description": "Notify, group and count some kinds of errors from shield studies.",
             "properties": {
-                "packet": {
-                    "type": "string",
-                    "enum": [
-                        "shield-study-error"
-                    ]
-                },
                 "error_id": {
                     "description": "between 1,100 chars, no spaces, unicode ok.",
                     "type": "string",
@@ -106,9 +100,15 @@
                 }
             },
             "required": [
-                "packet",
                 "error_id",
                 "error_source"
+            ]
+        },
+        "type": {
+            "type": "string",
+            "description": "doc_type, restated",
+            "enum": [
+                "shield-study-error"
             ]
         }
     },
