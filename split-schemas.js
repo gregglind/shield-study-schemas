@@ -41,6 +41,7 @@ schema.properties.data.oneOf.map(function (which) {
       key
     ]
   },
+  modified.required.push('type');
   allSchemas.push([key, modified]);
 });
 
