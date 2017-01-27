@@ -12,9 +12,9 @@ var jsonschema = {
 };
 
 var schemas = {
-  'shield-study': require('./schemas/shield-study.schema.json'),
-  'shield-study-addon': require('./schemas/shield-study-addon.schema.json'),
-  'shield-study-error': require('./schemas/shield-study-error.schema.json')
+  'shield-study': require('./schemas-client/shield-study.schema.json'),
+  'shield-study-addon': require('./schemas-client/shield-study-addon.schema.json'),
+  'shield-study-error': require('./schemas-client/shield-study-error.schema.json')
 };
 
 const assert = require('assert');
