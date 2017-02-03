@@ -34,8 +34,7 @@
         "clientId",
         "id",
         "type",
-        "version",
-        "environment"
+        "version"
       ]
     },
     "applicationForShield": {

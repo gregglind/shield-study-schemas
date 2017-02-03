@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "title": "shield-study",
-    "description": "Shield Study State",
+    "description": "`shield-study` state and outcome data.",
     "properties": {
         "version": {
             "type": "integer",
@@ -45,7 +45,7 @@
         },
         "data": {
             "type": "object",
-            "description": "Shield Study State",
+            "description": "`shield-study` state and outcome data.",
             "properties": {
                 "study_state": {
                     "type": "string",

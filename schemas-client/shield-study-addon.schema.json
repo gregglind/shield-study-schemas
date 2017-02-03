@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "title": "shield-study-addon",
-    "description": "Shield-Study-addon addon-specific data, sent as Map(s,s).  You may have to cast back at re:dash.",
+    "description": "`shield-study-addon` addon-specific probe data, with `attributes` sent as Map(s,s).",
     "properties": {
         "version": {
             "type": "integer",
@@ -46,7 +46,7 @@
         "data": {
             "type": "object",
             "title": "Shield-Study-Addon 'data' field.",
-            "description": "Shield-Study-addon addon-specific data, sent as Map(s,s).  You may have to cast back at re:dash.",
+            "description": "`shield-study-addon` addon-specific probe data, with `attributes` sent as Map(s,s).",
             "properties": {
                 "attributes": {
                     "type": "object",

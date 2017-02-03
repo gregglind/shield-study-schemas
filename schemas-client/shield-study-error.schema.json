@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "title": "shield-study-error",
-    "description": "Notify, group and count some kinds of errors from shield studies.",
+    "description": "`shield-study-error` data used to notify, group and count some kinds of errors from shield studies.",
     "properties": {
         "version": {
             "type": "integer",
@@ -46,7 +46,7 @@
         "data": {
             "type": "object",
             "title": "Shield-Study-Error 'data' field",
-            "description": "Notify, group and count some kinds of errors from shield studies.",
+            "description": "`shield-study-error` data used to notify, group and count some kinds of errors from shield studies.",
             "properties": {
                 "error_id": {
                     "description": "between 1,100 chars, no spaces, unicode ok.",

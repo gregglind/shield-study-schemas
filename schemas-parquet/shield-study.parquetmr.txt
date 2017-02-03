@@ -9,7 +9,7 @@ message shield-study {
     }
     required binary clientId (UTF8);
     required binary creationDate (UTF8);
-    required group environment {
+    optional group environment {
         required group system {
             optional group os {
                 optional binary name (UTF8);

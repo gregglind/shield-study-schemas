@@ -73,7 +73,7 @@
     },
     "shieldStudy": {
       "type": "object",
-      "description": "Shield Study State",
+      "description": "`shield-study` state and outcome data.",
       "properties": {
         "study_state": {
           "type": "string",
@@ -106,7 +106,7 @@
     "shieldStudyAddon": {
       "type": "object",
       "title": "Shield-Study-Addon 'data' field.",
-      "description": "Shield-Study-addon addon-specific data, sent as Map(s,s).  You may have to cast back at re:dash.",
+      "description": "`shield-study-addon` addon-specific probe data, with `attributes` sent as Map(s,s).",
       "properties": {
         "attributes": {
           "$ref" : "#/definitions/attributes"
@@ -119,7 +119,7 @@
     "shieldStudyError": {
       "type": "object",
       "title": "Shield-Study-Error 'data' field",
-      "description": "Notify, group and count some kinds of errors from shield studies.",
+      "description": "`shield-study-error` data used to notify, group and count some kinds of errors from shield studies.",
       "properties": {
         "error_id": {
           "$ref" : "#/definitions/idString",

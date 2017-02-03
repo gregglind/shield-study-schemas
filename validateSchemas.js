@@ -71,7 +71,6 @@ function generateValidCommon (which) {
 
 function generateShieldStudy(maximal = true) {
   var data = {
-    type: 'shield-study',
     study_state: randEl(validStudyStates),
   };
   if (maximal) {
@@ -83,7 +82,6 @@ function generateShieldStudy(maximal = true) {
 
 function generateShieldAddon(maximal = true) {
   var data = {
-    type: 'shield-study-addon',
     attributes: generateAttributes()
   };
   if (!maximal) {
@@ -94,7 +92,6 @@ function generateShieldAddon(maximal = true) {
 
 function generateShieldError(maximal=true) {
   var data = {
-    type: 'shield-study-error',
     error_id:  genString(randInt(1,30)),
     error_source: randEl(validErrorSource),
     // optional
