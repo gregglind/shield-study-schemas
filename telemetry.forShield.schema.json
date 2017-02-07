@@ -49,7 +49,7 @@
                 "$ref": "#/definitions/addon"
               }
             },
-            "active Experiment": {
+            "activeExperiment": {
               "type": "object",
               "properties": {
                 "id": {
