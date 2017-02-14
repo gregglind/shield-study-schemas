@@ -58,7 +58,6 @@ var schema = require('./shield-schemas.incomplete.json');
 var jsonfile = require('jsonfile');
 var fs = require('fs');
 const { Parquet } = require('jsonschema-parquet');
-
 const DIR = './schemas-client';
 const TELDIR = './schemas-telemetry';
 const PARQUETDIR = './schemas-parquet';

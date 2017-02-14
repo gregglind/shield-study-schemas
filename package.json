@@ -1,7 +1,7 @@
 {
   "name": "shield-study-schemas",
   "description": "Schemas (jsonschema) and packet generator for Shield Studies",
-  "version": "0.8.3",
+  "version": "0.9.0",
   "author": "Gregg Lind <glind@mozilla.com>",
   "bugs": {
     "url": "https://github.com/gregglind/shield-study-schemas/issues"
@@ -14,7 +14,7 @@
     "fixpack": "^2.3.1",
     "json-schema-deref": "^0.3.5",
     "jsonfile": "^2.4.0",
-    "jsonschema-parquet": "^0.2.0",
+    "jsonschema-parquet": "^0.3.1",
     "npm-run-all": "^4.0.0",
     "randomstring": "^1.1.5"
   },

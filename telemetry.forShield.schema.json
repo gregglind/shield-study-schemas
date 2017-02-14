@@ -181,10 +181,10 @@
           "type": "object",
           "properties": {
             "creationDate": {
-              "type": "number"
+              "type": "integer"
             },
             "resetDate": {
-              "type": "number"
+              "type": "integer"
             }
           }
         },
@@ -427,10 +427,10 @@
           "type": "object",
           "properties": {
             "creationDate": {
-              "type": "number"
+              "type": "integer"
             },
             "resetDate": {
-              "type": "number"
+              "type": "integer"
             }
           }
         },
